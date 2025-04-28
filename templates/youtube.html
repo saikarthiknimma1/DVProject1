@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}YouTube Sentiment{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h2 class="display-5">📺 YouTube Sentiment Analysis</h2>
+    <p class="lead">Discover viewer reactions and comment trends.</p>
+</section>
+
+<div class="container my-4">
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Distribution (Pie Chart)</h4>
+        {{ pie_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Text Length Distribution (Box Plot)</h4>
+        {{ line_chart|safe }}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Home</a>
+    </div>
+</div>
+<div class="summary-card">
+    <h2>🎥 YouTube Sentiment Insights</h2>
+    <ul>
+        <li><strong>📊 Sentiment Overview:</strong> 
+            <ul>
+                <li><span style="color:#4CAF50;">Positive:</span> 65.1% — majority sentiment shows favorable feedback.</li>
+                <li><span style="color:#F44336;">Negative:</span> 33.1% — substantial critical voice among users.</li>
+                <li><span style="color:#9E9E9E;">Neutral:</span> 1.7% — very limited neutral responses.</li>
+            </ul>
+        </li>
+        <li><strong>📦 Text Length Distribution:</strong>
+            <ul>
+                <li>Positive and negative sentiments exhibit longer comment lengths — indicating more expressive feedback.</li>
+                <li>Neutral comments are typically shorter and to-the-point.</li>
+                <li>Outliers suggest occasional highly detailed or minimal input from users.</li>
+            </ul>
+        </li>
+        <li><strong>📝 Insight:</strong> YouTube audience engages emotionally, with feedback skewed positively but showing notable critique as well. Text length indicates stronger opinions in expressive posts.</li>
+    </ul>
+</div>
+
+{% endblock %}

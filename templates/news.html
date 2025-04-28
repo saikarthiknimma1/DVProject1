@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}News Sentiment{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h2 class="display-5">📰 News Sentiment Analysis</h2>
+    <p class="lead">Dive into media coverage sentiments over time.</p>
+</section>
+
+<div class="container my-4">
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Distribution (Pie Chart)</h4>
+        {{ pie_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Breakdown (Bar Chart)</h4>
+        {{ sentiment_chart|safe }}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Home</a>
+    </div>
+</div>
+<div class="summary-card">
+    <h2>📰 News Sentiment Overview</h2>
+    <p>
+        The sentiment analysis for news sources reveals a dominant <strong>neutral sentiment</strong>, accounting for 
+        approximately <strong>91.7%</strong> of the total data. Positive news comprises only <strong>6.8%</strong>, while 
+        negative sentiment is minimal at around <strong>1.5%</strong>.
+    </p>
+    <p>
+        This suggests that news platforms largely report events in a factual and unbiased manner, with limited emotional 
+        tonality. It may also reflect the journalistic emphasis on objectivity.
+    </p>
+</div>
+
+{% endblock %}

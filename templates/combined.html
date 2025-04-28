@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block title %}Combined Dataset Analysis{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h2 class="display-5">🌎 Combined Dataset Insights</h2>
+    <p class="lead">Analyzing broader trends across all platforms together.</p>
+</section>
+
+<div class="container my-4">
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Distribution (Pie Chart)</h4>
+        {{ pie_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Over Time (Line Chart)</h4>
+        {{ line_chart|safe }}
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5 class="text-center mb-2">Positive WordCloud</h5>
+                <img src="{{ wc_positive }}" class="img-fluid" alt="Positive WordCloud">
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5 class="text-center mb-2">Negative WordCloud</h5>
+                <img src="{{ wc_negative }}" class="img-fluid" alt="Negative WordCloud">
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5 class="text-center mb-2">Neutral WordCloud</h5>
+                <img src="{{ wc_neutral }}" class="img-fluid" alt="Neutral WordCloud">
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Combined Sentiment Trends (Stacked Area Chart)</h4>
+        {{ stacked_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Combined Treemap Analysis</h4>
+        {{ treemap|safe }}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Home</a>
+    </div>
+</div>
+<div class="container my-5">
+    <div class="card p-4 shadow-sm bg-light">
+        <h4 class="text-center mb-3">🧠 Combined Insights Summary</h4>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">🔵 <strong>Negative sentiment</strong> dominates across the combined datasets, making up over 75% of total mentions.</li>
+            <li class="list-group-item">🟠 <strong>Neutral sentiment</strong> remains stable but less prevalent compared to negative, with a share around 15%.</li>
+            <li class="list-group-item">🟢 <strong>Positive sentiment</strong> is the least common, comprising under 10% of overall sentiment trends.</li>
+            <li class="list-group-item">📈 <strong>Temporal Analysis</strong> shows a steep decline in all sentiment categories after the year 2005, reflecting data cutoff or event saturation.</li>
+            <li class="list-group-item">🌐 <strong>Treemap analysis</strong> visually reaffirms the overwhelming dominance of negative sentiment across all combined sources.</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

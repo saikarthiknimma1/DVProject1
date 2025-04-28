@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}Twitter Sentiment{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h2 class="display-5">🐦 Twitter Sentiment Analysis</h2>
+    <p class="lead">Analyzing tweet reactions and sentiment trends.</p>
+</section>
+
+<div class="container my-4">
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Distribution (Pie Chart)</h4>
+        {{ pie_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Mentions Over Time (Line Chart)</h4>
+        {{ line_chart|safe }}
+    </div>
+
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Home</a>
+    </div>
+    <div class="insight-card">
+        <h3>📊 Twitter Sentiment Insights Summary</h3>
+        <p><strong>🥧 Sentiment Distribution:</strong> The overwhelming majority of tweets exhibit a <strong>negative sentiment</strong>, accounting for approximately <strong>87.7%</strong> of the data. Only <strong>12.3%</strong> reflect a <strong>positive sentiment</strong>. This suggests a trend of dissatisfaction or concern among Twitter users.</p>
+        <p><strong>📈 Sentiment Over Time:</strong> While the overall volume of mentions fluctuates, <strong>negative sentiment consistently dominates</strong>. Peaks likely relate to major events prompting increased reactions—mostly critical. The sentiment trend remains persistently adverse.</p>
+    </div>
+    
+    
+</div>
+{% endblock %}

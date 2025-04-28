@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .hero {
+            background: linear-gradient(90deg, #0077ff, #00c6ff);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 40px auto;
+            gap: 20px;
+            max-width: 1000px;
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1;
+            min-width: 220px;
+            max-width: 250px;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card a {
+            text-decoration: none;
+            color: #0077ff;
+            font-weight: 600;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1>Sentiment Dashboard</h1>
+            <ul>
+                <li><a href="{{ url_for('twitter_analysis') }}">Twitter</a></li>
+                <li><a href="{{ url_for('news_analysis') }}">News</a></li>
+                <li><a href="{{ url_for('comparison_analysis') }}">Comparison</a></li>
+                <li><a href="{{ url_for('youtube_analysis') }}">YouTube</a></li>
+                <li><a href="{{ url_for('combined_analysis') }}">Combined</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Sentiment Insights</h1>
+        <p>Explore trends and sentiment breakdown across social platforms and news.</p>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>📊 Twitter</h3>
+            <p>Analyze public sentiments and tweet patterns.</p>
+            <a href="{{ url_for('twitter_analysis') }}">Explore Twitter</a>
+        </div>
+        <div class="card">
+            <h3>📰 News</h3>
+            <p>Track media sentiment and keyword insights.</p>
+            <a href="{{ url_for('news_analysis') }}">Explore News</a>
+        </div>
+        <div class="card">
+            <h3>📺 YouTube</h3>
+            <p>View comment trends and content reactions.</p>
+            <a href="{{ url_for('youtube_analysis') }}">Explore YouTube</a>
+        </div>
+        <div class="card">
+            <h3>📈 Compare</h3>
+            <p>Compare sentiment across all platforms.</p>
+            <a href="{{ url_for('comparison_analysis') }}">Compare Platforms</a>
+        </div>
+        <div class="card">
+            <h3>🆕 Combined Data</h3>
+            <p>Analyze combined sentiment trends and word clouds.</p>
+            <a href="{{ url_for('combined_analysis') }}">Explore Combined</a>
+        </div>
+    </section>
+
+</body>
+</html>

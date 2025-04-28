@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Platform Comparison{% endblock %}
+
+{% block content %}
+<section class="text-center my-5">
+    <h2 class="display-5">📈 Platform Sentiment Comparison</h2>
+    <p class="lead">Compare Twitter, News, and YouTube trends side-by-side.</p>
+</section>
+
+<div class="container my-4">
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Distribution by Source (Bar Chart)</h4>
+        {{ pie_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Over Time by Source (Line Chart)</h4>
+        {{ line_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Overall Mentions Over Time (Stacked Area Chart)</h4>
+        {{ stacked_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Sentiment Comparison by Source (Facet View)</h4>
+        {{ facet_chart|safe }}
+    </div>
+
+    <div class="card p-4 shadow-sm mb-4">
+        <h4 class="text-center mb-3">Source-wise Sentiment Trends (Combined Datasets)</h4>
+        {{ source_sentiment_chart|safe }}
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">← Back to Home</a>
+    </div>
+</div>
+<div class="accordion mt-5" id="summaryAccordion">
+    <div class="accordion-item shadow-sm">
+      <h2 class="accordion-header" id="summaryHeading">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#summaryCollapse" aria-expanded="false" aria-controls="summaryCollapse">
+          🔍 Click to View Summary of Insights
+        </button>
+      </h2>
+      <div id="summaryCollapse" class="accordion-collapse collapse" aria-labelledby="summaryHeading" data-bs-parent="#summaryAccordion">
+        <div class="accordion-body">
+          <ul class="lead">
+              <li><strong>YouTube</strong> shows a high volume of positive sentiment compared to other platforms.</li>
+              <li><strong>Twitter</strong> has a predominant negative sentiment trend over time, especially peaking early.</li>
+              <li><strong>News</strong> content leans significantly toward neutral sentiments with minor variations over time.</li>
+              <li>Sentiment distribution and volume patterns vary widely across platforms, emphasizing unique audience behaviors.</li>
+              <li>The combined line and area charts highlight a declining trend in overall engagement for Twitter content.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
